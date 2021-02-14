@@ -1,0 +1,19 @@
+{% extends "home/menu.html.twig" %}
+
+{% block main %}
+	<div class="d-flex justify-content-around">
+		<div class="text-center">
+			<h4>Qui seront vos invités?</h4>
+			<div><hr></div>
+			<div class="card border-primary mb-3" style="max-width: 20rem;">
+				<div class="card-header">Ajouter les invités</div>
+				<div class="card-body">
+					{{ form_start(guestForm) }}
+					{{ form_widget(guestForm) }}
+					<button type="submit" class=" btn btn-secondary float-right">Créer</button>
+					{{ form_end(guestForm) }}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

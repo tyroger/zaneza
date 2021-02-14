@@ -1,0 +1,20 @@
+{% extends "/home/home.html.twig" %}
+
+{# template non exploiter, car deja codé ailleurs #}
+{% block title %}Mise à jour mot de passe
+{% endblock %}
+
+{% block main %}
+	<div class="container col-md-3">
+		<hr class="my-2">
+		<h5>Mettez à jour votre mot de passe</h5>
+		<hr class="my-2">
+
+		{{ form_start(resetForm) }}
+		{{ form_row(resetForm.plainPassword) }}
+		<button class="btn btn-primary">Confirmer</button>
+		{{ form_end(resetForm) }}
+	</div>
+{% endblock %}
+
+{% block menu %}{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block menu %}
+	<div class="col-12 navBar mt-3">
+		{% if app.user %}
+			<nav class="sticky">
+				<ul class="d-flex justify-content-around">
+					<li id="journal">
+						<a href="{{ path('user_show') }}">Mon journal</a>
+					</li>
+					<li id="evenement">
+						<a href="{{ path('event_register') }}">Créer un événement</a>
+					</li>
+					<li id="invitations">
+						<a href="{{ path('invitation_showAll') }}">Mes invitations</a>
+					</li>
+				</ul>
+			</nav>
+		{% endif %}
+	</div>
+{% endblock %}
+
+
+{% block javascripts %}
+	<script src="/js/navbar.js"></script>
+{% endblock %}

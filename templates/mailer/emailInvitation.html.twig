@@ -1,0 +1,22 @@
+<div
+	class="container">
+
+	{# email pour les utilisateurs ayants déjà un compte actif #}
+
+	<h3>Au plaisir de vous retrouver!</h3>
+
+	<p>Salut!</p>
+
+	<p>Je vous invite à participer à mon évènement que j'organise le :
+		{{dateOfEvent | format_datetime ('full','short', locale='fr')}}</p>
+
+
+	<a href="https://tucoderas.net/login">Cliquez ici pour consulter l'invitation</a>
+
+	<p>hâte de vous y voir!</p>
+
+	<p>A très bientôt!</p>
+
+	<p>{{ app.User.firstName | title }}</p>
+
+</div>

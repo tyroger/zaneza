@@ -1,0 +1,19 @@
+{% extends "/home/home.html.twig" %}
+
+{% block title %}Email envoyé
+{% endblock %}
+
+{% block main %}
+	<div class="container col-md-3 my-2">
+		<div class="alert">
+			<p>Un email vous a été envoyé, il contient un lien vous permettant de mettre à jour votre mon de passe. Ce lien expirera dans
+				{{ tokenLifetime|date('g') }}
+				heure(s).</p>
+			<p>Si vous ne le voyez pas consultez vos spams ou
+				<a href="{{ path('app_forgot_password_request')}}">refaites une nouvelle demande</a>.</p>
+		</div>
+	</div>
+
+{% endblock %}
+
+{% block menu %}{% endblock %}

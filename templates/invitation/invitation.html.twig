@@ -1,0 +1,70 @@
+{% extends "inline.html.twig" %}
+
+{% block main %}
+	<div class="container">
+		<div class="row">
+			<div class="col-3 my-3">
+				<a href="{{ path('invitation_showAll')}}" class="btn validationButton bgColorThree border-0">
+					Retour
+				</a>
+			</div>
+		</div>
+
+		<div class="row d-flex justify-content-around mt-4 text-center">
+		
+			<div class = "mb-5">
+
+				<div class="cards shadows">
+					<div class="cardHeader bgColorThree">
+						<p>Invitation de
+							{{invitation.event.owner.firstName|title}}</p>
+					</div>
+					<div class="cardBody ">
+						<p class="card-title">Le
+							{{invitation.event.date|format_datetime('full','short', locale='fr')}}</p>
+						<p class="card-title">Le thème :
+							{{invitation.event.theme}}</p>
+						<p class="card-text">Adresse:
+							{{invitation.event.address}}</p>
+					</div>
+					<div class="cardFooter bottomBtn bgColorThree">
+						<a href="{{path('invitation_accepted',{'guestId':app.user.id, 'invitationId':invitation.id})}}">Je participe</a>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-md-6 col-sm-12">
+				<div class="topBtn bg-white border-0 text-center">
+					<p class="ranchoStyle h5">Ils ont repondu présents :</p>
+				</div>
+				<div class="row d-flex justify-content-around text-center mt-4">
+					<div>
+						<table>
+							<tr>
+								<td><img src="/img/photo-profil.png" style="width:70px"></td>
+							</tr>
+							<tr>
+								<td class="ranchoStyle h5">{{invitation.event.owner.firstName|title}}</td>
+							</tr>
+						</table>
+					</div>
+					{% for guest in invitation.event.guests %}
+						{% if invitation.accepted == true %}
+							<div>
+								<table>
+									<tr>
+										<td><img src="/img/photo-profil.png" style="width:70px"></td>
+									</tr>
+									<tr>
+										<td class="ranchoStyle h5">{{guest.user.firstName|title}}</td>
+									</tr>
+								</table>
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

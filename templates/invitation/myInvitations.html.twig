@@ -1,0 +1,116 @@
+{% extends "inline.html.twig" %}
+
+{% block main %}
+	<div class="container-fluid">
+
+		{% set invitations = app.user.invitations %}
+		{% set invitations = invitations | filter (invitation => invitation.event.date >= date('now')) %}
+		{% set invitations = invitations | filter (invitation => invitation.sent) %}
+		{% set invitations = invitations | sort ((a, b) => a.event.date <=> b.event.date) %}
+
+		<div
+			class="col-12 d-flex flex-wrap justify-content-around text-center mt-5 px-0">
+
+			{# ----------- invitations en attente ----------- #}
+
+			<div class="col-md-6 col-sm-12 ranchoStyle mb-5 px-0">
+
+				<div class="topBtn bg-white border-0 mx-1">
+					<p class="fs-2 my-0 h5">Je suis convié(e) - invitations en attente :</p>
+				</div>
+
+				<div
+					class="d-flex justify-content-around flex-wrap">
+					{# ----------- 1er cas----------- #}
+					{% if invitations is empty %}
+						<div class="cards shadows mt-5">
+							<div class="cardHeader col-12 bgColorThree">
+								<p>Invitation</p>
+							</div>
+							<div class="cardBody col-12">
+								<p class="my-3">Vous n'avez pas d'invitation en attente!</p>
+							</div>
+
+							<div class="cardFooter col-12">
+								<div class="row"></div>
+							</div>
+						</div>
+						{# ----------- 2eme cas----------- #}
+					{% else %}
+						{% for invitation in invitations | filter (invitation => invitation.accepted == false) %}
+							<div class="cards shadows mt-3">
+								<div class="cardHeader col-12 bgColorThree">
+									<p>Invitation</p>
+								</div>
+								<div class="cardBody col-12">
+									<p class="card-title text-muted">Organisé par :
+										{{invitation.event.owner.firstName|title}}</p>
+									<p class="card-title">le :
+										{{invitation.event.date|format_datetime('full','short', locale='fr')}}</p>
+									<p class="card-title">le thème :
+										{{invitation.event.theme}}</p>
+								</div>
+
+								<div class="cardFooter col-12">
+									<div class="row">
+										<div class="col-4 leftBtn bgColorThree">
+											<a href="{{path('invitation_accepted',{'guestId':app.user.id, 'invitationId':invitation.id})}}">Je participe</a>
+										</div>
+										<div class="col-4 middleBtn bgColorThree">
+											<a href="{{ path('invitation_show',{'invitationId':invitation.id})}}">Plus d'infos</a>
+										</div>
+										<div class="col-4 rightBtn bgColorThree">
+											<a href="{{path('invitation_refused',{'guestId':app.user.id, 'invitationId':invitation.id})}}">Indisponible</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					{% endif %}
+				</div>
+			</div>
+
+			{# ----------- invitations confirmées ----------- #}
+
+			<div class="col-md-6 col-sm-12 ranchoStyle px-0">
+				<div class="topBtn bgColorOne text-white border-0 mx-1">
+					<p class="fs-2 my-0 h5">Invitations confirmées :</p>
+				</div>
+
+				<div class="d-flex justify-content-around flex-wrap">
+					{% for invitation in invitations | filter (invitation => invitation.accepted) %}
+
+						<div class="cards shadows mt-3">
+
+							<div class="cardHeader col-12 bgColorOne">
+								<p>Prochaine invitation</p>
+							</div>
+
+							<div class="cardBody col-12">
+								<p class="card-title text-muted">Organisé par :
+									{{invitation.event.owner.firstName|title}}</p>
+								<p class="card-title">le :
+									{{invitation.event.date|format_datetime('full','short', locale='fr')}}</p>
+								<p class="card-title">le thème :
+									{{invitation.event.theme}}</p>
+							</div>
+
+							<div class="cardFooter col-12">
+								<div class="row">
+									<div class="col-6 leftBtn bgColorOne">
+										<a href="{{path('contribution_add',{'eventId':invitation.event.id})}}">Contribuer</a>
+									</div>
+									<div class="col-6 rightBtn bgColorOne">
+										<a href="">Se désister</a>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

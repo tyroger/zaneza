@@ -1,0 +1,17 @@
+{% extends "/home/menu.html.twig" %}
+
+
+{% block title %}
+	Page non trouvée
+{% endblock %}
+
+{% block main %}
+	<div class="container">
+		<h1>
+			Page non trouvée !</h1>
+		<p>La page que vous cherchez n'existe pas !</p>
+		<a href="{{ path('user_show') }}">
+			<button class="btn btn-sm px-4 my-1">Retour au journal</button>
+		</a>
+	</div>
+{% endblock %}

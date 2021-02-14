@@ -1,0 +1,17 @@
+{% extends '/home/home.html.twig' %}
+
+{% block title %}AubEs-Inscription
+{% endblock %}
+
+{% block main %}
+	<div class="container col-md-3 mt-5">
+		<h4>Créez votre compte!</h4>
+		<div class="mt-4">
+			{{form_start(form)}}
+			{{form_widget(form)}}
+			<button type="submit" class="btn validationButton">Valider</button>
+			{{form_end(form)}}
+		</div>
+	</div>
+{% endblock %}
+{% block menu %}{% endblock %}

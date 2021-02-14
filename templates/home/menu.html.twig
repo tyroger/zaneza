@@ -1,0 +1,16 @@
+{% extends "/home/home.html.twig" %}
+
+{% block title %}page de
+	{{app.user.firstName|title}}
+{% endblock %}
+
+{% block UserHeader %}
+	<div class="col-10">
+		<div class="my-1">
+			<a href="{{path("account_show")}}"><img src="/img/photo-profil.png" alt="" class="avatar rounded-circle min-vw-10"></a>
+			<small class="avId">
+				Hello
+				{{app.user.firstName|title}}</small>
+		</div>
+	</div>
+{% endblock %}

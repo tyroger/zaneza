@@ -1,0 +1,304 @@
+html, body {
+    /* background-image: linear-gradient(to left top, #ff6f91, #ff9787, #ffbe92, #fce1b2, #fefedf); */
+    /* background-color: #dfd6ca; */
+    background-color: #71b08a;
+    background-origin: border-box;
+    background-size: cover;
+    margin: 0;
+    height: 100%;
+}
+
+.ranchoStyle {
+    font-family: 'Rancho', cursive;
+}
+
+.merriStyle {
+    font-family: 'Merriweather', serif;
+}
+
+.formulaireStyle {
+    font-family: 'Alegreya Sans', sans-serif;
+    font-size:16px;
+    font-weight:lighter;
+}
+
+h1 {
+    color: white;
+    font-family: 'Rancho', cursive;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 40px;
+    padding: 5px;
+    color: #707070;
+}
+
+h3 {
+    color: white;
+    font-size: 40px;
+    padding-top: 6px;
+}
+
+h4 {
+    font-family: 'Rancho', cursive;
+    text-align: center;
+    font-size: x-large;
+}
+
+a:hover, a:visited, a:link {
+    text-decoration: none;
+}
+
+.homepageImage {
+    background-image: url(/img/toast.jpg);
+    background-repeat: no-repeat;
+    background-position: top;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 44vh;
+    box-shadow: inset 0 0 0 1000px rgba(196, 143, 143, 0.425);
+}
+
+.connectionButton {
+    background-color: #45656b;
+    border-color: none;
+    font-size: 18px;
+    margin-top: 20px;
+    border-radius: 61px;
+    padding: 2px 30px;
+    font-family: 'Rancho', cursive;
+    color: white;
+}
+
+.validationButton {
+    background-color: #489593;
+    border-color: #489593;
+    font-size: 20px;
+    border-radius: 61px;
+    padding: 2px 30px;
+    font-family: 'Rancho', cursive;
+    color: white;
+}
+
+.callToAction {
+    border-radius: 61px;
+    border: 0;
+    background-color: #FF5252;
+    padding: 1px 100px;
+    font-size: 35px;
+    font-family: 'Rancho', cursive;
+    color: white;
+}
+
+.middle {
+    margin-top: 15vh;
+}
+
+form {
+    font-family: 'Alegreya', serif;
+}
+
+.firstConnectionAlert {
+    padding: 0 50px;
+}
+
+.firstConnectionAlert .btn {
+    border-radius: 15px;
+    border: 1px solid white;
+    font-family: 'Merriweather', serif;
+    font-size: small;
+    color: #494747;
+}
+
+.navBar {
+    background-color: #45656b;
+}
+
+.navBar a {
+    color: white;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: auto;
+}
+
+nav ul li {
+    display: inline-block;
+    font-family: 'Rancho', cursive;
+    font-size: 30px;
+    margin: 5px auto;
+    padding: 0 20px;
+}
+
+.avatar {
+    border-radius: 12px;
+    background-color: #f3eed9;
+}
+
+.myAvatar {
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+    border: 1px solid #FFBE92;
+    background-position: center;
+    background-image: url(/img/avatar.jpg);
+    background-repeat: no-repeat;
+    background-size: 145px 145px;
+    margin: auto;
+    height: 102px;
+    width: 145px;
+}
+
+.myName {
+    border: 1px solid #FFBE92;
+    background-color: #ff8066;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    height: 25px;
+    width: 145px;
+    color: white;
+    font-size: 18px;
+}
+
+.cards {
+    height: 200px;
+    width: 400px;
+    border-radius: 16px;
+    background-color: white;
+    margin: auto;
+}
+
+.cardHeader {
+    height: 52px;
+    font-size: 25px;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+    color: white;
+    padding-top: 8px;
+}
+
+.cardBody {
+    height: 116px;
+    background-color: white;
+}
+
+.cards .cardBody p {
+    font-family: 'Imprima', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    color: #45656b;
+}
+
+.cardFooter {
+    height: 32px;
+    font-size: 20px;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.cards p {
+    font-family: 'Rancho', cursive;
+}
+
+.cards a {
+    color: white;
+    font-family: 'Rancho', cursive;
+}
+
+.bgColorOne {
+    background-color: #45656b;
+}
+
+.bgColorTwo {
+    background-color: #418575;
+}
+
+.bgColorThree {
+    background-color: #489593;
+}
+
+.leftBtn {
+    border-top-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.rightBtn {
+    border-top-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.middleBtn {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.bottomBtn {
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.topBtn {
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+    border: 1px solid #FF5252;
+}
+
+.shadows {
+    box-shadow: 5px -10px 15px rgba(128, 128, 128, 0.514);
+}
+
+.galeries .cards {
+    height: 460px;
+}
+
+.galeries .cardBody {
+    height: 375px;
+    background-color: rgb(255, 242, 242);
+}
+
+.galeries .cardHeader {
+    color: #FF5252;
+    background-color: white;
+}
+
+.FixedHeightContainer {
+    height: 500px;
+    width: auto;
+    padding: auto;
+}
+
+.Content {
+    height: 445px;
+    overflow-y: auto;
+}
+
+@media screen and (max-width:450px) {
+    .callToAction {
+        font-size: 20px;
+    }
+    .homepage h2 {
+        font-size: 5vw
+    }
+    .homepage h3 {
+        font-size: 5vw
+    }
+    .homepageImage {
+        height: 40vh;
+    }
+    .middle {
+        margin-top: 30%;
+    }
+    nav ul li {
+        font-size: 18px;
+        padding: 0 5px;
+    }
+    .sticky {
+        position: sticky;
+        top: 0;
+    }
+}

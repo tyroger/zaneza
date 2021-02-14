@@ -1,0 +1,39 @@
+{% extends "inline.html.twig" %}
+
+
+{% block main %}
+	<div class="container-fluid">
+
+		<div class="row text-center">
+			<div class="col-12 col-md-4">
+				<a class="btn validationButton bgColorTwo mt-3" href="{{path("user_show")}}">Retour</a>
+			</div>
+
+			<div class="col-12 col-md-4 mt-5">
+
+				<p class="h5 ranchoStyle text-center">{{event.theme | title }}</p>
+				<hr>
+				<div>
+					{{ form_start(form)}}
+					{{ form_widget(form)}}
+					{{ form_end(form)}}
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(document).ready(function () {
+bsCustomFileInput.init()
+})
+	</script>
+{% endblock %}
+
+{# ce block JS vient parier a la difficulte d'afficher le texte dans le champ du fichier telecharger, avec l'aide d'un peu de css!#}
+{% block javascripts %}
+	<script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+	<script>
+		$(document).ready(function () {
+bsCustomFileInput.init()
+})
+	</script>
+{% endblock %}

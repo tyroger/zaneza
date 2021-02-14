@@ -1,0 +1,138 @@
+{% extends "inline.html.twig" %}
+
+{% block css %}
+	<link rel="stylesheet" href="/css/contribution.css">
+{% endblock %}
+
+
+{% block main %}
+	<div class="container-fluid">
+		<div class="row text-center">
+			<div class="col-12 col-md-6 my-3">
+
+				<a href="{{ path('event_show',{'userId':app.user}) }}">
+					<button class="btn validationButton bgColorTwo border-0 mb-2">Revoir mes évènements</button>
+				</a>
+				<a href="{{ path('invitation_showAll') }}">
+					<button class="btn validationButton bgColorOne border-0 mb-2">Revoir mes invitations</button>
+				</a>
+
+			</div>
+			<div class="col-12 col-md-6 my-3">
+				<p class="ranchoStyle h6">Invitation : Le
+					{{event.date|format_datetime('full','short', locale='fr')}}</p>
+
+			</div>
+		</div>
+		<div class="row d-flex justify-content-around text-center">
+
+			<div class="col-12 col-md-3">
+				<p class="h5 ranchoStyle my-3">j'apporte une contribution</p>
+				<hr>
+				{{form_start(form)}}
+				{{form_widget(form)}}
+				{{form_end(form)}}
+			</div>
+
+			<div class="col-12 col-md-4 contribs">
+				<p class="h5 ranchoStyle mt-3 mb-3">Les contributions</p>
+				<hr>
+				<div class="fixedHeightContainer">
+					<div class="Content">
+						<div class="table-responsive">
+							<table class="table table-sm table-striped shadow-sm p-1 mb-1 bg-white rounded">
+								<thead>
+									<tr class="bgColorThree ranchoStyle">
+										<th class="h5">Categorie</th>
+										<th class="h5">Déscription</th>
+										<th class="h5">Quantité</th>
+										<th class="h5">Unité</th>
+										<th></th>
+										<th></th>
+
+									</tr>
+								</thead>
+								<tbody class="formulaireStyle">
+									{% for contribution in event.contributions | sort((a, b) => a.type <=> b.type) %}
+										<tr onclick="toggleContributionParticipantDisplay({{ contribution.id }});" >
+											<td>{{contribution.type}}</td>
+											<td>{{contribution.designation}}</td>
+											<td>{{contribution.quantity}}</td>
+											<td>{{contribution.unit}}</td>
+											{% if contribution.participant == app.user %}
+												<td>
+													<a href="{{ path('contribution_update', {'contributionId' : contribution.id}) }}">
+														<button title="Modifier">
+															<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-vector-pen" fill="currentColor">
+																<path fill-rule="evenodd" d="M10.646.646a.5.5 0 0 1 .708 0l4 4a.5.5 0 0 1 0 .708l-1.902 1.902-.829 3.313a1.5 1.5 0 0 1-1.024 1.073L1.254 14.746 4.358 4.4A1.5 1.5 0 0 1 5.43 3.377l3.313-.828L10.646.646zm-1.8 2.908l-3.173.793a.5.5 0 0 0-.358.342l-2.57 8.565 8.567-2.57a.5.5 0 0 0 .34-.357l.794-3.174-3.6-3.6z"/>
+																<path fill-rule="evenodd" d="M2.832 13.228L8 9a1 1 0 1 0-1-1l-4.228 5.168-.026.086.086-.026z"/>
+															</svg>
+														</button>
+													</a>
+
+												</td>
+												<td>
+													<a href="{{ path('contribution_delete', {'contributionId': contribution.id}) }}">
+														<button title="Supprimer">
+															<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-x-circle" fill="currentColor">
+																<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+																<path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+															</svg>
+														</button>
+													</a>
+
+												</td>
+											{% endif %}
+										</tr>
+										<tr class="d-none" id="tr-contributeur-{{ contribution.id }}">
+											<td colspan="2" >Par : {{contribution.participant.firstName}}</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-12 col-md-3">
+				
+				<p class="h5 ranchoStyle my-3">Invitations confirmées</p>
+				<hr>
+					<div
+					class="row d-flex justify-content-around text-center mt-4">
+					{# <div>
+						<table>
+							<tr>
+								<td><img src="/img/photo-profil.png" style="width:70px"></td>
+							</tr>
+							<tr>
+								<td>{{event.owner.firstName|title}}</td>
+							</tr>
+						</table>
+					</div> #}
+					{% for guest in event.guests %}
+						{% if guest.accepted == true %}
+							<div>
+								<table>
+									<tr>
+										<td><img src="/img/photo-profil.png" style="width:70px"></td>
+									</tr>
+									<tr>
+										<td class="ranchoStyle h5">{{guest.user.firstName|title}}</td>
+									</tr>
+								</table>
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+				<br><br>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	<script src="/js/contribution.js"></script>
+
+{% endblock %}

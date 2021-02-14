@@ -1,0 +1,17 @@
+{% extends "/home/menu.html.twig" %}
+
+
+{% block title %}
+	Demande non autorisée !
+{% endblock %}
+
+{% block main %}
+	<div class="container">
+		<h1>
+			Accès refusé !</h1>
+		<p>Vous n'avez pas les droits requis pour accèder à cette page !</p>
+		<a href="{{ path('homepage') }}">
+			<button class="btn btn-sm px-4 my-1">Retour à l'accueil</button>
+		</a>
+	</div>
+{% endblock %}

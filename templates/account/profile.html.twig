@@ -1,0 +1,40 @@
+{% extends "inline.html.twig" %}
+
+{% block main %}
+	<div class="container text-center my-1">
+		<div class="row mt-3">
+			<div class="col-12 col-md-6">
+				<p class="h4 ranchoStyle my-3 text-center">Vos informations personnelles</p>
+				<div class="card my-1 bgColorTwo">
+					<div class="card-body">
+						<div class="card-text">
+							{{ form_start(form) }}
+							{{ form_widget(form) }}
+							<button type="submit" class="btn validationButton">Enregistrer les modifications</button>
+							{{ form_end(form) }}
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-12 col-md-4">
+				<div class="my-1">
+					<p class="h4 ranchoStyle my-3 text-center">Autres actions :</p>
+					<hr>
+					<p class="h5 ranchoStyle">Modifier le mot de passe.</p>
+					<a href="{{ path('account_password') }}">
+						<button class="btn validationButton">Modifier</button>
+					</a>
+					<hr>
+					<p class="h5 ranchoStyle">Supprimer définitivement le compte.</p>
+					<a href="{{path('account_delete') }}">
+						<button class="btn validationButton">Clôturer</button>
+					</a>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{% if app.user %}
+		page de
+		{{app.user.firstName|title}}
+	{% endif %}
+{% endblock %}
+
+
+{% block main %}
+
+	<div class="container text-center">
+		<div class="col-12 homepage middle">
+			<h2 class="merriStyle">{{slogan1}}</h2>
+			<h3 class="ranchoStyle">{{slogan2}}</h3>
+		</div>
+
+		<div class="container-fluid text-center homepageImage">
+			<div class="middle">
+				{% if not app.user %}
+					<a href="{{path('account_register')}}">
+						<button class="btn callToAction">{{subscribAct}}</button>
+					</a>
+				{% else %}
+					<a href="{{path('user_show')}}">
+						<button class="btn callToAction">Retour à mon journal</button>
+					</a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

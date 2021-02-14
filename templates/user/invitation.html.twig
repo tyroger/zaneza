@@ -1,0 +1,48 @@
+{% extends "/home/menu.html.twig" %}
+
+{% block main %}
+	<div class="container-fluid row">
+		<div class="col-2">
+			<button class="float-left" type="submit">
+				<a href="{{ path('user_invitations') }}">Retour</a>
+			</button>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row d-flex justify-content-around  mt-3">
+			<div class="col-md-6">
+				<h5>MON INVITATION :</h5>
+				<div class="card border-secondary mb-3 mr-3" style="width: 20rem">
+					<div class="card-header">{{invitation.event.theme|upper}}</div>
+					<div class="card-body">
+						<h6 class="card-title">{{invitation.event.date| date("d/m/Y")}}</h6>
+						<p class="card-text">Adresse:</p>
+						<p class="card-text">{{invitation.event.address}}</p>
+					</div>
+				</div>
+				<div>
+					<button class="float-left" type="submit">
+						<a href="">Je participe</a>
+					</button>
+				</div>
+
+				<button class="float-left" type="submit">
+					{# <a href="{{path('')}}">Je contribue</a> #}
+				</button>
+
+			</div>
+			<div class="col-md-6">
+				<h5>
+					ONT REPONDU A L'APPEL :
+				</h5>
+				<h6>
+					x personnes :
+				</h6>
+				{% for guest in guests %}
+					<p>{{guest.firstName}}</p>
+				{% endfor %}
+				<div></div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

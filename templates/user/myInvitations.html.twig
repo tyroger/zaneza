@@ -1,0 +1,46 @@
+{% extends "/home/menu.html.twig" %}
+
+{% block main %}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-6">
+				<h4 class="breadcrumb bg-warning">Je suis convié(e)</h4>
+				<div><hr></div>
+				<div class="container d-flex justify-content-around flex-wrap">
+					{% for invitation in app.user.invitations| sort((a, b) => a.event.date <=> b.event.date) %}
+						<div class="card border-secondary mb-3 mr-3 text-center">
+							<div class="card-header">{{invitation.event.theme|upper}}
+							</div>
+							<div class="card-body">
+								<h6 class="card-title text-muted">Organisé par : {{invitation.event.owner.firstName|title}}</h6>
+								<h6 class="card-title">le :
+									{{invitation.event.date|format_datetime('full','short', locale='fr')}}</h6>
+
+							</div>
+							<div class="card-footer row">
+								<a type="button" class="btn btn-secondary btn-sm col-md-4" href="{{ path('user_invitation',{'invitationId':invitation.id}) }}">Plus d'infos</a>
+								<a type="button" class="btn btn-success btn-sm col-md-4" href="#">Jex participe</a>
+								<a type="button" class="btn btn-warning btn-sm col-md-4" href="#">Pas dispo</a>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+
+			</div>
+			<div class="col-md-6">
+				<h4 class="breadcrumb bg-success">Ma présence confirmée pour :</h4>
+				<div><hr></div>
+
+				<div class="container d-flex justify-content-around flex-wrap">
+					<div class="card border-primary mb-3" style="max-width: 20rem;">
+						<div class="card-header bg-success">Header</div>
+						<div class="card-body">
+							<h4 class="card-title">Primary card title</h4>
+							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

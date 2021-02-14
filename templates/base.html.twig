@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Zaneza
+			{% endblock %}
+		</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="/css/reset.css">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Rancho&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Imprima&display=swap" rel="stylesheet">
+	</head>
+
+	{# ------------------------------------------------------ body ------------------------------------------------------ #}
+	<body
+		class="container-fluid">
+		{# ------------------------------------------------------ block header ---------------------------------------------------- #}
+		<div class="row">
+			<div class="col-12 d-flex justify-content-between text-center">
+				<div class="col-md-3 col-sm-6">
+					<a href="{{path('homepage')}}">
+						<h1>Zaneza</h1>
+					</a>
+				</div>
+				<div class="col-md-3 cocol-sm-6">
+					{% if app.user %}
+						<a href="{{path('user_logout')}}">
+							<button class="btn connectionButton">Déconnexion</button>
+						</a>
+						<p class="mt-3 ranchoStyle">
+							<a href="{{path("account_show")}}">Gérer mon Profil</a>
+						</p>
+
+					{% else %}
+						<a href="{{path('user_login')}}">
+							<button class="btn connectionButton">Connexion</button>
+						</a>
+
+					{% endif %}
+				</div>
+			</div>
+		</div>
+
+		{# ------------------------------------------------------ block menu ------------------------------------------------------ #}
+		<div class="menu row"> {% block menu %}{% endblock %}
+			</div>
+			{# ------------------------------------------------------ block main ------------------------------------------------------ #}
+			<div class="corps row px-1"> {% block main %}{% endblock %}
+
+				<div>
+					<script src="/js/jquery.min.js"></script>
+					<script src="/js/popper.min.js"></script>
+					<script src="/js/bootstrap.min.js"></script>
+
+					{% block javascripts %}{% endblock %}
+				</div>
+			</div>
+		</body>
+	</html>

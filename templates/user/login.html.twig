@@ -1,0 +1,47 @@
+{% extends '/home/home.html.twig' %}
+
+{% block title %}Zaneza-Connexion
+{% endblock %}
+
+{% block main %}
+	<div class="container col-md-3 mt-5">
+		<h4>Connectez-vous à votre compte.</h4>
+
+		{% if hasError %}
+			<div class="alert alert-danger">
+				une erreur est survenue!<br>L'identifiant (ou le mot de passe) n'est pas valide!</div>
+		{% endif %}
+
+		<div class="mt-4">
+
+			<form action="{{ path('user_login') }}" method="post">
+				<div class="form-group">
+					<div>
+						<label for="email">Email</label>
+						<br>
+						<input type="text" name="_username" id="email" placeholder="Votre adresse email" required value="{{username}}" class="form-control">
+					</div>
+					<div class="my-2">
+						<label for="password">Mot de passe</label>
+						<br>
+						<input type="password" name="_password" id="password" placeholder="Votre mot de passe" required class="form-control">
+					</div>
+					<div class="mt-4">
+						<button type="submit" class="btn validationButton">Connexion</button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<div class="mt-5 firstConnectionAlert">
+			<a href="{{ path('app_forgot_password_request') }}">
+				<button class="btn btn-warning">Première connexion ou mot de passe oublié?<br>
+					Reinitialisez votre mot de passe!</button>
+			</a>
+
+		</div>
+
+
+	</div>
+{% endblock %}
+{% block menu %}{% endblock %}
